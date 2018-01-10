@@ -19,7 +19,7 @@ public class Utils {
     }
 
     public static Long getCurrentTime() {
-        return System.currentTimeMillis() / 1000;
+        return System.currentTimeMillis();
 
     }
 
