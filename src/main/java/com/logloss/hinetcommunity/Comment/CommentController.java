@@ -13,6 +13,11 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    @RequestMapping("/posts/comment")
+    public List<Comment> getCommentsById(@RequestParam("postId") String id) {
+        return commentService.getCommentsByPostId(id);
+    }
+
     @RequestMapping(value = "/posts/comment/add", method = RequestMethod.POST)
     public void addComment(@RequestBody Comment comment) {
         commentService.addComment(comment);

@@ -8,6 +8,9 @@ import com.logloss.hinetcommunity.Utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -22,7 +25,14 @@ public class PostController {
     /* post section */
     @RequestMapping("/posts")
     public List<Post> getAllPosts() {
-        return postService.getAllPosts();
+        List<Post> allPost = postService.getAllPosts();
+        allPost.sort(new Comparator<Post>() {
+            @Override
+            public int compare(Post o1, Post o2) {
+                return o2.getTimeStamp().compareTo(o1.getTimeStamp());
+            }
+        });
+        return allPost;
     }
 
     @RequestMapping("/posts/user")

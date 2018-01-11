@@ -15,6 +15,10 @@ public class CommentService {
         return commentRepository.findCommentsByUserId(id);
     }
 
+    public List<Comment> getCommentsByPostId(String id) {
+        return commentRepository.findCommentsByPostId(id);
+    }
+
     public void addComment(Comment comment) {
         commentRepository.save(comment);
     }
